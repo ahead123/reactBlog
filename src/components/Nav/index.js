@@ -15,13 +15,16 @@ export default class Nav extends Component {
 
 			        <ul className="navbar-nav mr-auto">
 			            <li className="nav-item active">
-			                <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+			              <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
 			            </li>
 			            <li className="nav-item">
-			                <a className="nav-link" href="#">Articles</a>
+			              <a className="nav-link" href="#">Articles</a>
 			            </li>
 			            <li className="nav-item">
-			                <a className="nav-link" href="#">About</a>
+			              <a className="nav-link" href="#">About</a>
+			            </li>
+			            <li className="nav-item">
+			            	<Link className="nav-link" to="/signup">Sign Up</Link>
 			            </li>
 			        </ul>
 

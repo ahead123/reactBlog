@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Nav from '../Nav'
+import { Link } from 'react-router-dom';
+import BlogPostPreview from '../BlogPostPreview';
+import { mockStoryData } from '../../mockStoryData';
 import Footer from '../Footer'
-import BlogPostPreview from '../BlogPostPreview'
-import { mockStoryData } from '../../mockStoryData'
 
 export default class App extends Component {
   constructor(props) {
@@ -12,15 +12,27 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({ posts: mockStoryData })
   }
 
   getAllPosts = () => {
-    const { posts } = this.state
-    const previews = []
+    const { posts } = this.state;
+    const previews = [];
     posts.map((item, index) => {
-      previews.push(<div className="col-lg-4 col-md-6 mb-4"><BlogPostPreview imageURL={item.imageURL}  title={item.title} teaser={item.teaser} /></div>)
+      const postPath = `/blog-post/${item.id}`;
+      previews.push(
+        <div className="col-lg-4 col-md-6 mb-4">
+          <Link to={postPath}>
+            <BlogPostPreview 
+              imageURL={item.imageURL}  
+              title={item.title} 
+              teaser={item.teaser}
+              key={item.id} 
+            />
+          </Link>
+        </div>
+      )
     })
 
     return previews
@@ -29,19 +41,15 @@ export default class App extends Component {
   handleChange = (event) => {
     this.setState({
       value: event.currentTarget.value
-    })
-    console.log(this.state.value)
+    });
+    console.log(this.state.value);
   }
 
 	 render() {
-    console.log('mockStoryData',mockStoryData)
-    console.log('this.state',this.state)
+    console.log('mockStoryData',mockStoryData);
+    console.log('this.state',this.state);
     return (
       <div>
-
-       <header>
-         <Nav />
-       </header>
 
        <main className="mt-5">         
           <div className="container">
@@ -68,7 +76,7 @@ export default class App extends Component {
                       React Blog is also a community that allows users to submit
                       content, and blog posts to the site!
                     </p>
-                    <a href="#" className="btn btn-info">Sign up now!</a>
+                    <Link to="/signup" className="btn btn-info">Sign up now!</Link>
 
                   </div>                 
 
@@ -81,9 +89,7 @@ export default class App extends Component {
           </div> 
 
        </main>
-
        <Footer />
-
       </div>
     );
   }

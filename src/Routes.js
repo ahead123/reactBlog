@@ -1,24 +1,38 @@
 import 'babel-polyfill';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 // Our application route
+import Nav from './components/Nav';
 import App from './components/App';
+import SignUp from './components/SignUp';
+import BlogPost from './components/BlogPost';
+
 
 const appRoutes = [
 	{
+		exact: 'exact',
 		path: '/',
 		component: App
+	},
+	{
+		path: '/signup',
+		component: SignUp
+	},
+	{
+		path: '/post:id',
+		component: BlogPost
 	}
-]
+];
 
 class Root extends Component {
 
 	routes = () => {
 		const paths = []
 		appRoutes.map((item, index) => {
-			paths.push(<Route path={item.path} component={item.component} />)
+			const exact = item.exact ? item.exact : ''
+			paths.push(<Route exact path={item.path} component={item.component} />)
 		})
 		return paths
 	}
@@ -35,7 +49,12 @@ class Root extends Component {
 // Render App to DOM
 render(
 	<BrowserRouter>
-		<Root />
+		<div>
+		 <header>
+      <Nav />
+     </header>
+		 <Root />
+		</div>
 	</BrowserRouter>, 
-	document.getElementById('react-fun')
+	document.getElementById('react-blog')
 );
