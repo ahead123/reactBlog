@@ -26,7 +26,8 @@ export default class BlogPost extends Component {
 	showBlogPost = () => {
 		const { blogPost: { imageURL, title, teaser } } = this.state
 		return(
-			<div>
+			<div className="container">
+				<div className="row">
 				<div className="col-md-7 mb-4">
 		      <div className="view overlay hm-white-light z-depth-1-half">
 		        <img className="img-fluid" src={imageURL}/>
@@ -37,6 +38,7 @@ export default class BlogPost extends Component {
 		    	<h2>{title}</h2>
 		      <hr></hr>
 		      <p>{teaser}</p>
+		    </div>
 		    </div>   
 			</div>
 		)

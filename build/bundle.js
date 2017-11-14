@@ -15893,30 +15893,34 @@ var BlogPost = function (_Component) {
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
-				null,
+				{ className: 'container' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'col-md-7 mb-4' },
+					{ className: 'row' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'view overlay hm-white-light z-depth-1-half' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: imageURL }),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'mask' })
-					)
-				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					{ className: 'col-md-5 mb-4' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'h2',
-						null,
-						title
+						{ className: 'col-md-7 mb-4' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'view overlay hm-white-light z-depth-1-half' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: imageURL }),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'mask' })
+						)
 					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'p',
-						null,
-						teaser
+						'div',
+						{ className: 'col-md-5 mb-4' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'h2',
+							null,
+							title
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							null,
+							teaser
+						)
 					)
 				)
 			);
