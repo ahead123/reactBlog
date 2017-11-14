@@ -16084,6 +16084,7 @@ var Nav = function (_Component) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignUp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_sendAjaxEmail__ = __webpack_require__(549);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16094,22 +16095,105 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 var SignUp = function (_Component) {
 	_inherits(SignUp, _Component);
 
-	function SignUp() {
+	function SignUp(props) {
 		_classCallCheck(this, SignUp);
 
-		return _possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).call(this, props));
+
+		_this.handleClick = function (event) {
+			event.preventDefault();
+			var _this$state = _this.state,
+			    email = _this$state.email,
+			    name = _this$state.name;
+
+			if (name !== '' && email !== '') {
+				_this.setState({ loading: true });
+				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__actions_sendAjaxEmail__["a" /* sendAjaxEmail */])(name, email);
+				_this.setState({ email: '', name: '' });
+			} else {
+				alert('Please enter both a name and an email');
+			}
+		};
+
+		_this.state = {
+			email: '',
+			name: '',
+			loading: false
+		};
+		return _this;
 	}
 
 	_createClass(SignUp, [{
 		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
+			console.log(this.state);
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
-				null,
-				'Sign Up'
+				'form',
+				{ className: 'mt-5' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'container' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'p',
+						{ className: 'h5 text-center mb-4' },
+						'Subscribe'
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'md-form' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+							type: 'text',
+							id: 'form3',
+							className: 'form-control',
+							onChange: function onChange(event) {
+								return _this2.setState({ name: event.target.value });
+							},
+							value: this.state.name
+						}),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'label',
+							{ 'for': 'form3' },
+							'Your name'
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'md-form' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+							type: 'text',
+							id: 'form2',
+							className: 'form-control',
+							onChange: function onChange(event) {
+								return _this2.setState({ email: event.target.value });
+							},
+							value: this.state.email
+						}),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'label',
+							{ 'for': 'form2' },
+							'Your email'
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'text-center' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'button',
+							{
+								className: 'btn btn-info',
+								type: 'submit',
+								onClick: this.handleClick
+							},
+							'Send'
+						)
+					)
+				)
 			);
 		}
 	}]);
@@ -35366,6 +35450,28 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
+
+/***/ }),
+/* 549 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return sendAjaxEmail; });
+var sendAjaxEmail = function sendAjaxEmail(name, email) {
+	emailjs.send("sendgrid", "template_9TNqSx99", {
+		to_name: name,
+		message_html: email,
+		from_name: 'reactBlog',
+		to_email: email
+	}).then(function (response) {
+		console.log(response.status, response.text);
+		if (response.status == 200) {
+			alert('Message sent successfully!');
+		}
+	}, function (err) {
+		console.log("FAILED. error=", err);
+	});
+};
 
 /***/ })
 /******/ ]);
