@@ -16084,7 +16084,6 @@ var Nav = function (_Component) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignUp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__actions_sendAjaxEmail__ = __webpack_require__(549);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16092,7 +16091,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -16112,11 +16110,28 @@ var SignUp = function (_Component) {
 
 			if (name !== '' && email !== '') {
 				_this.setState({ loading: true });
-				__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__actions_sendAjaxEmail__["a" /* sendAjaxEmail */])(name, email);
+				_this.sendAjaxEmail(name, email);
 				_this.setState({ email: '', name: '' });
 			} else {
 				alert('Please enter both a name and an email');
 			}
+		};
+
+		_this.sendAjaxEmail = function (name, email) {
+			emailjs.send("sendgrid", "template_9TNqSx99", {
+				to_name: name,
+				message_html: email,
+				from_name: 'reactBlog',
+				to_email: email
+			}).then(function (response) {
+				console.log(response.status, response.text);
+				if (response.status == 200) {
+					alert('Message sent successfully!');
+					_this.setState({ loading: false });
+				}
+			}, function (err) {
+				console.log("FAILED. error=", err);
+			});
 		};
 
 		_this.state = {
@@ -35450,28 +35465,6 @@ module.exports = function (css) {
 	return fixedCss;
 };
 
-
-/***/ }),
-/* 549 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return sendAjaxEmail; });
-var sendAjaxEmail = function sendAjaxEmail(name, email) {
-	emailjs.send("sendgrid", "template_9TNqSx99", {
-		to_name: name,
-		message_html: email,
-		from_name: 'reactBlog',
-		to_email: email
-	}).then(function (response) {
-		console.log(response.status, response.text);
-		if (response.status == 200) {
-			alert('Message sent successfully!');
-		}
-	}, function (err) {
-		console.log("FAILED. error=", err);
-	});
-};
 
 /***/ })
 /******/ ]);

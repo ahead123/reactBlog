@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { sendAjaxEmail } from '../../actions/sendAjaxEmail'
 
 export default class SignUp extends Component {
 
@@ -16,12 +15,32 @@ export default class SignUp extends Component {
 		event.preventDefault()
 		const { email, name } = this.state
 		if(name!=='' && email!==''){
-			this.setState({ loading: true })
-			sendAjaxEmail(name, email)
+			this.setState({loading: true})
+			this.sendAjaxEmail(name, email)
 			this.setState({email: '', name: ''})
 		} else {
 			alert('Please enter both a name and an email')
 		}
+	}
+
+	sendAjaxEmail = (name, email) => {
+		emailjs.send("sendgrid","template_9TNqSx99",
+			{ 
+				to_name: name, 
+				message_html: email, 
+				from_name: 'reactBlog', 
+				to_email: email 
+			}
+		).then(response => { 
+				console.log(response.status, response.text) 
+				if(response.status == 200){
+					alert('Message sent successfully!')
+					this.setState({loading: false})
+				}
+			}, err => { 
+				console.log("FAILED. error=", err) 
+			}
+		)
 	}
 
 	render(){
