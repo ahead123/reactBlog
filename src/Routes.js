@@ -21,7 +21,7 @@ const appRoutes = [
 		component: SignUp
 	},
 	{
-		path: '/post:id',
+		path: '/post/:id',
 		component: BlogPost
 	}
 ];

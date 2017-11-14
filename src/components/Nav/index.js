@@ -18,11 +18,8 @@ export default class Nav extends Component {
 			              <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
 			            </li>
 			            <li className="nav-item">
-			              <a className="nav-link" href="#">Articles</a>
-			            </li>
-			            <li className="nav-item">
-			              <a className="nav-link" href="#">About</a>
-			            </li>
+			              <a className="nav-link" href="#">Blog Posts</a>
+			            </li>			            
 			            <li className="nav-item">
 			            	<Link className="nav-link" to="/signup">Sign Up</Link>
 			            </li>

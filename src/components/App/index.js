@@ -20,7 +20,7 @@ export default class App extends Component {
     const { posts } = this.state;
     const previews = [];
     posts.map((item, index) => {
-      const postPath = `/blog-post/${item.id}`;
+      const postPath = `/post/${item.id}`;
       previews.push(
         <div className="col-lg-4 col-md-6 mb-4">
           <Link to={postPath}>
