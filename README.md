@@ -1,4 +1,3 @@
-# reactBlog
 # blogReactified
 
 blogReactified is an app that uses react to make a blog and newsletter subscription service. 
