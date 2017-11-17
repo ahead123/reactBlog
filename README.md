@@ -1,6 +1,6 @@
 # blogReactified
 
-blogReactified is an app that uses react to make a blog and newsletter subscription service. 
+blogReactified is an app that uses react, sendgrid, and email js to make a blog and newsletter subscription service. 
 
 ## Installation
 
@@ -31,6 +31,7 @@ heroku open
 * [Webpack](https://webpack.js.org/) - For dependency bundling
 * [Express](https://expressjs.com/) - Node server framework
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/) - For styling
+* [SendGrid](https://sendgrid.com/) - Email API
 
 
 ## License
