@@ -21,7 +21,7 @@ export default class Nav extends Component {
 			              <Link className="nav-link" to="/">Blog Posts</Link>
 			            </li>			            
 			            <li className="nav-item">
-			            	<Link className="nav-link" to="/signup">Sign Up</Link>
+			            	<Link className="nav-link" to="/signup">Subscribe</Link>
 			            </li>
 			        </ul>
 

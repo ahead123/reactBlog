@@ -76,7 +76,7 @@ export default class App extends Component {
                       React Blog is also a community that allows users to submit
                       content, and blog posts to the site!
                     </p>
-                    <Link to="/signup" className="btn btn-info">Sign up now!</Link>
+                    <Link to="/signup" className="btn btn-info">Subscribe to Newsletter!</Link>
 
                   </div>                 
 
