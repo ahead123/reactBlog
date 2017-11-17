@@ -9,7 +9,7 @@ export default class Footer extends Component {
 			        <div className="row">
 
 			            <div className="col-md-6">
-			                <h5 className="title">React Blog</h5>
+			                <h5 className="title">blog Reactified</h5>
 			                <p>Stay up to date with all things Javascript!</p>
 			            </div>
 
