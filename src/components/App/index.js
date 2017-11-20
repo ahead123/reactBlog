@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import BlogPostPreview from '../BlogPostPreview';
-import { mockStoryData } from '../../mockStoryData';
 import Footer from '../Footer';
 import Button from '../Button';
 import { 
@@ -28,7 +27,7 @@ export default class App extends Component {
     const { posts } = this.state;
     const previews = [];
     posts.map((post, index) => {
-      const postPath = `/post/${post.id}`;
+      const postPath = `/post/${post._id}`;
       previews.push(
         <div className="col-lg-4 col-md-6 mb-4">
           <Link to={postPath}>
@@ -36,7 +35,7 @@ export default class App extends Component {
               imageURL={post.imageURL}  
               title={post.title} 
               teaser={post.teaser}
-              key={post.id} 
+              key={post._id} 
             />
           </Link>
         </div>
@@ -54,7 +53,6 @@ export default class App extends Component {
   } 
 
 	 render() {
-    console.log('mockStoryData',mockStoryData);
     console.log('this.state',this.state);
     return (
       <div>

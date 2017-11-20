@@ -11190,31 +11190,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 165 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mockStoryData; });
-var mockStoryData = [{
-	'id': '1',
-	'imageURL': 'https://goo.gl/8PcK3j',
-	'title': 'Javascript Futures: ES2017 and the Road ahead',
-	'teaser': 'Jeff Strauss discusses some of the new and proposed features of JavaScript, explaining the ES.Next maturity stages and the TC39 review process.'
-}, {
-	'id': '2',
-	'imageURL': 'https://goo.gl/DW7xdc',
-	'title': 'Angular vs. React – Who’s one step ahead?',
-	'teaser': 'SDeciding which JavaScript framework is best for your web application is never easy especially if you have to choose between Angular and React.'
-}, {
-	'id': '3',
-	'imageURL': 'https://goo.gl/W3y6Ds',
-	'title': 'Facebook\'s \'React Native\' Has Changed the Rules of App Development',
-	'teaser': 'Which would you choose: a single-platform app with a great user experience or a cross-platform app with a poor one?'
-}];
-
-
-
-/***/ }),
+/* 165 */,
 /* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16397,10 +16373,9 @@ module.exports = g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BlogPostPreview__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mockStoryData__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Footer__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Button__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Footer__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Button__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants__ = __webpack_require__(265);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16408,7 +16383,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -16431,7 +16405,7 @@ var App = function (_Component) {
 
       var previews = [];
       posts.map(function (post, index) {
-        var postPath = '/post/' + post.id;
+        var postPath = '/post/' + post._id;
         previews.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'col-lg-4 col-md-6 mb-4' },
@@ -16442,7 +16416,7 @@ var App = function (_Component) {
               imageURL: post.imageURL,
               title: post.title,
               teaser: post.teaser,
-              key: post.id
+              key: post._id
             })
           )
         ));
@@ -16469,7 +16443,7 @@ var App = function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_7__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_6__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
         return _this2.setState({ posts: posts.data });
       }).catch(function (error) {
         return console.log(error);
@@ -16478,7 +16452,6 @@ var App = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log('mockStoryData', __WEBPACK_IMPORTED_MODULE_4__mockStoryData__["a" /* mockStoryData */]);
       console.log('this.state', this.state);
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
@@ -16533,7 +16506,7 @@ var App = function (_Component) {
             )
           )
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Footer__["a" /* default */], null)
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Footer__["a" /* default */], null)
       );
     }
   }]);
@@ -16552,9 +16525,11 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mockStoryData__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BlogPost_css__ = __webpack_require__(574);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BlogPost_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__BlogPost_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__constants__ = __webpack_require__(265);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16562,6 +16537,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -16577,48 +16553,57 @@ var BlogPost = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (BlogPost.__proto__ || Object.getPrototypeOf(BlogPost)).call(this, props));
 
 		_this.showBlogPost = function () {
-			var _this$state$blogPost = _this.state.blogPost,
-			    imageURL = _this$state$blogPost.imageURL,
-			    title = _this$state$blogPost.title,
-			    teaser = _this$state$blogPost.teaser;
+			if (_this.state.postIndex != null) {
+				var _this$state$blogPosts = _this.state.blogPosts[_this.state.postIndex],
+				    imageURL = _this$state$blogPosts.imageURL,
+				    title = _this$state$blogPosts.title,
+				    teaser = _this$state$blogPosts.teaser;
 
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
-				{ className: 'container' },
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'row' },
+					{ className: 'container' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'col-md-7 mb-4' },
+						{ className: 'row' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'div',
-							{ className: 'view overlay hm-white-light z-depth-1-half' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: imageURL }),
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'mask' })
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'col-md-5 mb-4' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'h2',
-							null,
-							title
+							{ className: 'col-md-7 mb-4' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'view overlay hm-white-light z-depth-1-half' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: 'img-fluid', src: imageURL }),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'mask' })
+							)
 						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'p',
-							null,
-							teaser
+							'div',
+							{ className: 'col-md-5 mb-4' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'h2',
+								null,
+								title
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'p',
+								null,
+								teaser
+							)
 						)
 					)
-				)
-			);
+				);
+			} else {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'p',
+					null,
+					'Sorry that article doesn\'t exist'
+				);
+			}
 		};
 
 		_this.state = {
-			blogPost: []
+			blogPosts: [],
+			postIndex: null
 		};
 		return _this;
 	}
@@ -16626,20 +16611,31 @@ var BlogPost = function (_Component) {
 	_createClass(BlogPost, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {
+			var _this2 = this;
+
+			var postIndex = 0;
 			var id = this.props.match.params.id;
 
-			this.setState({
-				blogPost: __WEBPACK_IMPORTED_MODULE_2__mockStoryData__["a" /* mockStoryData */][id - 1]
+			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
+				_this2.setState({ blogPosts: posts.data });
+				_this2.state.blogPosts.forEach(function (post, index) {
+					if (post._id == id) {
+						_this2.setState({ postIndex: index });
+					}
+				});
+			}).catch(function (error) {
+				return console.log(error);
 			});
 		}
 	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			console.log('did mount', this.state.blogPost);
+			console.log('did mount', this.state.blogPosts);
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			console.log(this.state);
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'main',
 				{ className: 'mt-5' },
