@@ -20,7 +20,7 @@ export default class BlogPost extends Component {
 	componentWillMount(){
 		let postIndex=0;
 		const { id } = this.props.match.params
-		axios.get(POSTS_ENDPOINT)
+		axios.get(LOCALHOST_POSTS_ENDPOINT)
       .then(posts => {
       	 this.setState({ blogPosts: posts.data })
       	 this.state.blogPosts.forEach((post, index) => {      	 	

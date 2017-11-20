@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Post = require('./src/models/posts');
-const axios = require('axios');
+const Subscriber = require('./src/models/subscribers');
 require('dotenv').config();
 
 mongoose.connect(process.env.DB_URL)
@@ -62,6 +62,21 @@ SERVER.app.post('/posts', function(req, res){
 	 }else {
 	 	 console.log('post added', post)
 	 	 res.send(post)
+	 }		 
+ })
+})
+
+SERVER.app.post('/subscribe', function(req, res){
+	var subscriber = new Subscriber({
+		name: req.query.name,
+		email: req.query.email
+	});
+ subscriber.save(function(err) {
+	 if(err){
+	 	res.send(err)
+	 }else {
+	 	 console.log('subscriber added', subscriber)
+	 	 res.send(subscriber)
 	 }		 
  })
 })

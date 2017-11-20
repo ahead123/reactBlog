@@ -16443,7 +16443,7 @@ var App = function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_6__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* POSTS_ENDPOINT */]).then(function (posts) {
         return _this2.setState({ posts: posts.data });
       }).catch(function (error) {
         return console.log(error);
@@ -16616,7 +16616,7 @@ var BlogPost = function (_Component) {
 			var postIndex = 0;
 			var id = this.props.match.params.id;
 
-			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
+			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* LOCALHOST_POSTS_ENDPOINT */]).then(function (posts) {
 				_this2.setState({ blogPosts: posts.data });
 				_this2.state.blogPosts.forEach(function (post, index) {
 					if (post._id == id) {
@@ -16775,6 +16775,10 @@ var Nav = function (_Component) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignUp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(265);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16782,6 +16786,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
 
 
 
@@ -16800,7 +16807,7 @@ var SignUp = function (_Component) {
 			    name = _this$state.name;
 
 			if (name !== '' && email !== '') {
-				_this.setState({ loading: true });
+				_this.setState({ loading: true, messageName: name });
 				_this.sendAjaxEmail(name, email);
 				_this.setState({ email: '', name: '' });
 			} else {
@@ -16817,18 +16824,64 @@ var SignUp = function (_Component) {
 			}).then(function (response) {
 				console.log(response.status, response.text);
 				if (response.status == 200) {
-					alert('Message sent successfully!');
-					_this.setState({ loading: false });
+					_this.setState({ loading: false, formSuccess: true });
 				}
 			}, function (err) {
 				console.log("FAILED. error=", err);
 			});
+			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* SUBSCRIBE_ENDPOINT */] + '?name=' + name + '&email=' + email).then(function (response) {
+				return console.log(response);
+			}).catch(function (error) {
+				return console.log(error);
+			});
+		};
+
+		_this.showHideButton = function () {
+			var messageName = _this.state.messageName;
+
+			if (_this.state.formSuccess && _this.state.name == '') {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'mt-5' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'animated bounce infinite' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'h3',
+							null,
+							'Thanks for subscribing ' + messageName + '!'
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							null,
+							'We\'ve sent a cofirmation to your email.'
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Link */],
+						{ to: '/', className: 'btn btn-success' },
+						'Home'
+					)
+				);
+			} else {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'button',
+					{
+						className: 'btn btn-info',
+						type: 'submit',
+						onClick: _this.handleClick
+					},
+					'Send'
+				);
+			}
 		};
 
 		_this.state = {
 			email: '',
 			name: '',
-			loading: false
+			loading: false,
+			formSuccess: false,
+			messageName: ''
 		};
 		return _this;
 	}
@@ -16839,68 +16892,76 @@ var SignUp = function (_Component) {
 			var _this2 = this;
 
 			console.log(this.state);
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'form',
-				{ className: 'mt-5' },
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			if (this.state.loading) {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'container' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'p',
-						{ className: 'h5 text-center mb-4' },
-						'Subscribe'
-					),
+					{ className: 'mt-5' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'md-form' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-							type: 'text',
-							id: 'form3',
-							className: 'form-control',
-							onChange: function onChange(event) {
-								return _this2.setState({ name: event.target.value });
-							},
-							value: this.state.name
-						}),
+						{ className: 'container' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'label',
-							{ 'for': 'form3' },
-							'Your name'
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'md-form' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-							type: 'text',
-							id: 'form2',
-							className: 'form-control',
-							onChange: function onChange(event) {
-								return _this2.setState({ email: event.target.value });
-							},
-							value: this.state.email
-						}),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'label',
-							{ 'for': 'form2' },
-							'Your email'
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'text-center' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'button',
-							{
-								className: 'btn btn-info',
-								type: 'submit',
-								onClick: this.handleClick
-							},
-							'Send'
+							'h3',
+							{ className: 'h5 text-center mb-4' },
+							'Checking Email....'
 						)
 					)
-				)
-			);
+				);
+			} else {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'form',
+					{ className: 'mt-5' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'container' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							{ className: 'h5 text-center mb-4' },
+							'Subscribe'
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'md-form' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+								type: 'text',
+								id: 'form3',
+								className: 'form-control',
+								onChange: function onChange(event) {
+									return _this2.setState({ name: event.target.value });
+								},
+								value: this.state.name
+							}),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'form3' },
+								'Your name'
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'md-form' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+								type: 'text',
+								id: 'form2',
+								className: 'form-control',
+								onChange: function onChange(event) {
+									return _this2.setState({ email: event.target.value });
+								},
+								value: this.state.email
+							}),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'form2' },
+								'Your email'
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'text-center' },
+							this.showHideButton()
+						)
+					)
+				);
+			}
 		}
 	}]);
 
@@ -18127,10 +18188,14 @@ var Footer = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export LOCALHOST_POSTS_ENDPOINT */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return POSTS_ENDPOINT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LOCALHOST_POSTS_ENDPOINT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return POSTS_ENDPOINT; });
+/* unused harmony export LOCALHOST_SUBSCRIBE_ENDPOINT */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SUBSCRIBE_ENDPOINT; });
 var LOCALHOST_POSTS_ENDPOINT = 'http://localhost:3000/posts';
 var POSTS_ENDPOINT = 'https://blogreactified.herokuapp.com/posts';
+var LOCALHOST_SUBSCRIBE_ENDPOINT = 'http://localhost:3000/subscribe';
+var SUBSCRIBE_ENDPOINT = 'https://blogreactified.herokuapp.com/subscribe';
 
 /***/ }),
 /* 266 */
