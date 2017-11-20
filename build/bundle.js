@@ -16443,7 +16443,7 @@ var App = function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_6__constants__["c" /* POSTS_ENDPOINT */]).then(function (posts) {
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_6__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
         return _this2.setState({ posts: posts.data });
       }).catch(function (error) {
         return console.log(error);
@@ -16616,7 +16616,7 @@ var BlogPost = function (_Component) {
 			var postIndex = 0;
 			var id = this.props.match.params.id;
 
-			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* LOCALHOST_POSTS_ENDPOINT */]).then(function (posts) {
+			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_4__constants__["a" /* POSTS_ENDPOINT */]).then(function (posts) {
 				_this2.setState({ blogPosts: posts.data });
 				_this2.state.blogPosts.forEach(function (post, index) {
 					if (post._id == id) {
@@ -18188,8 +18188,8 @@ var Footer = function (_Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LOCALHOST_POSTS_ENDPOINT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return POSTS_ENDPOINT; });
+/* unused harmony export LOCALHOST_POSTS_ENDPOINT */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return POSTS_ENDPOINT; });
 /* unused harmony export LOCALHOST_SUBSCRIBE_ENDPOINT */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SUBSCRIBE_ENDPOINT; });
 var LOCALHOST_POSTS_ENDPOINT = 'http://localhost:3000/posts';
