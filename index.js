@@ -6,14 +6,14 @@ const Post = require('./src/models/posts');
 const Subscriber = require('./src/models/subscribers');
 require('dotenv').config();
 
-mongoose.connect(process.env.DB_URL)
+mongoose.connect(process.env.DB_URL);
 
 
 var SERVER = {
 	app: express(),
 	port: process.env.PORT || 3000,
 	static: function(req, res) {
-		console.log('dirname',__dirname)
+		console.log('dirname',__dirname);
 		res.sendFile('/build/index.html');
 	}
 };
@@ -25,9 +25,8 @@ SERVER.app.use(function(req, res, next) {
  res.setHeader('Access-Control-Allow-Credentials', 'true');
  res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
- //and remove cacheing so we get the most recent comments
  res.setHeader('Cache-Control', 'no-cache');
- next()
+ next();
 });
 
 
@@ -44,8 +43,8 @@ SERVER.app.get('/posts', function(req, res){
 		if(err) {
 			res.send('error',err);
 		}else {
-			console.log(posts)
-			res.send(posts)
+			console.log(posts);
+			res.send(posts);
 		}
 	})
 })
@@ -58,10 +57,10 @@ SERVER.app.post('/posts', function(req, res){
 	});
  post.save(function(err) {
 	 if(err){
-	 	res.send(err)
+	 	res.send(err);
 	 }else {
-	 	 console.log('post added', post)
-	 	 res.send(post)
+	 	 console.log('post added', post);
+	 	 res.send(post);
 	 }		 
  })
 })
@@ -73,10 +72,10 @@ SERVER.app.post('/subscribe', function(req, res){
 	});
  subscriber.save(function(err) {
 	 if(err){
-	 	res.send(err)
+	 	res.send(err);
 	 }else {
-	 	 console.log('subscriber added', subscriber)
-	 	 res.send(subscriber)
+	 	 console.log('subscriber added', subscriber);
+	 	 res.send(subscriber);
 	 }		 
  })
 })

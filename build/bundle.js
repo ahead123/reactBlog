@@ -16800,18 +16800,29 @@ var SignUp = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (SignUp.__proto__ || Object.getPrototypeOf(SignUp)).call(this, props));
 
+		_this.validateEmail = function (email) {
+			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+				return true;
+			} else {
+				return false;
+			}
+		};
+
 		_this.handleClick = function (event) {
 			event.preventDefault();
 			var _this$state = _this.state,
 			    email = _this$state.email,
 			    name = _this$state.name;
 
-			if (name !== '' && email !== '') {
-				_this.setState({ loading: true, messageName: name });
+			if (name !== '' && email !== '' && _this.validateEmail(email)) {
+				_this.setState({ error: '', loading: true, messageName: name });
 				_this.sendAjaxEmail(name, email);
 				_this.setState({ email: '', name: '' });
 			} else {
-				alert('Please enter both a name and an email');
+				_this.setState({
+					loading: false,
+					error: 'Please enter both a name and a valid email'
+				});
 			}
 		};
 
@@ -16828,6 +16839,7 @@ var SignUp = function (_Component) {
 				}
 			}, function (err) {
 				console.log("FAILED. error=", err);
+				_this.setState({ loading: false, error: 'Hmmm... Something went wrong. Please try submitting again.' });
 			});
 			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_3__constants__["b" /* SUBSCRIBE_ENDPOINT */] + '?name=' + name + '&email=' + email).then(function (response) {
 				return console.log(response);
@@ -16881,7 +16893,8 @@ var SignUp = function (_Component) {
 			name: '',
 			loading: false,
 			formSuccess: false,
-			messageName: ''
+			messageName: '',
+			error: ''
 		};
 		return _this;
 	}
@@ -16926,7 +16939,7 @@ var SignUp = function (_Component) {
 								id: 'form3',
 								className: 'form-control',
 								onChange: function onChange(event) {
-									return _this2.setState({ name: event.target.value });
+									return _this2.setState({ name: event.target.value, error: '' });
 								},
 								value: this.state.name
 							}),
@@ -16944,7 +16957,7 @@ var SignUp = function (_Component) {
 								id: 'form2',
 								className: 'form-control',
 								onChange: function onChange(event) {
-									return _this2.setState({ email: event.target.value });
+									return _this2.setState({ email: event.target.value, error: '' });
 								},
 								value: this.state.email
 							}),
@@ -16952,6 +16965,15 @@ var SignUp = function (_Component) {
 								'label',
 								{ 'for': 'form2' },
 								'Your email'
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'h5',
+							{ className: 'text-danger' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'strong',
+								null,
+								this.state.error
 							)
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
