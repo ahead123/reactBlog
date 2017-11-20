@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import BlogPostPreview from '../BlogPostPreview';
 import { mockStoryData } from '../../mockStoryData';
-import Footer from '../Footer'
+import Footer from '../Footer';
+import Button from '../Button';
+import { 
+  LOCALHOST_POSTS_ENDPOINT,
+  POSTS_ENDPOINT 
+} from '../../constants';
 
 export default class App extends Component {
   constructor(props) {
@@ -13,22 +19,24 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    this.setState({ posts: mockStoryData })
+    axios.get(POSTS_ENDPOINT)
+      .then(posts => this.setState({ posts: posts.data }))
+      .catch(error => console.log(error))
   }
 
   getAllPosts = () => {
     const { posts } = this.state;
     const previews = [];
-    posts.map((item, index) => {
-      const postPath = `/post/${item.id}`;
+    posts.map((post, index) => {
+      const postPath = `/post/${post.id}`;
       previews.push(
         <div className="col-lg-4 col-md-6 mb-4">
           <Link to={postPath}>
             <BlogPostPreview 
-              imageURL={item.imageURL}  
-              title={item.title} 
-              teaser={item.teaser}
-              key={item.id} 
+              imageURL={post.imageURL}  
+              title={post.title} 
+              teaser={post.teaser}
+              key={post.id} 
             />
           </Link>
         </div>
@@ -43,7 +51,7 @@ export default class App extends Component {
       value: event.currentTarget.value
     });
     console.log(this.state.value);
-  }
+  } 
 
 	 render() {
     console.log('mockStoryData',mockStoryData);
@@ -83,7 +91,7 @@ export default class App extends Component {
               </div>             
              
               <div className="row">
-                {this.getAllPosts()}
+                {this.getAllPosts()}                
               </div>
 
           </div> 
