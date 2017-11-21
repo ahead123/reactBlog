@@ -7,7 +7,9 @@ const Subscriber = require('./src/models/subscribers');
 const User = require('./src/models/users');
 require('dotenv').config();
 
-mongoose.connect(process.env.DB_URL);
+mongoose.connect(process.env.DB_URL)
+	.then(() => console.log('connection successful'))
+	.catch((err) => console.error(err));
 
 
 var SERVER = {
@@ -18,7 +20,6 @@ var SERVER = {
 		res.sendFile('/build/index.html');
 	}
 };
-
 
 
 SERVER.app.use(function(req, res, next) {
