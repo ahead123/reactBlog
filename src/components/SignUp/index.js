@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { 
-  LOCALHOST_SUBSCRIBE_ENDPOINT,
-  SUBSCRIBE_ENDPOINT 
-} from '../../constants';
+import { SUBSCRIBE_ENDPOINT } from '../../constants';
 
 export default class SignUp extends Component {
 
@@ -58,10 +55,13 @@ export default class SignUp extends Component {
 				}
 			}, err => { 
 				console.log("FAILED. error=", err)
-				this.setState({loading: false, error: 'Hmmm... Something went wrong. Please try submitting again.'}) 
+				this.setState({
+					loading: false, 
+					error: 'Hmmm... Something went wrong. Please try submitting again.'
+				}) 
 			}
 		)
-		axios.post(`${SUBSCRIBE_ENDPOINT}?name=${name}&email=${email}`)
+		axios.post(SUBSCRIBE_ENDPOINT, { name, email })
 		.then(response => console.log(response))
 		.catch(error => console.log(error))
 	}

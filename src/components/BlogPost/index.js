@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './BlogPost.css';
-import { 
-  LOCALHOST_POSTS_ENDPOINT,
-  POSTS_ENDPOINT 
-} from '../../constants';
+import { POSTS_ENDPOINT } from '../../constants';
 
 export default class BlogPost extends Component {
 
@@ -20,6 +17,7 @@ export default class BlogPost extends Component {
 	componentWillMount(){
 		let postIndex=0;
 		const { id } = this.props.match.params
+		console.log('this.props',this.props)
 		axios.get(POSTS_ENDPOINT)
       .then(posts => {
       	 this.setState({ blogPosts: posts.data })

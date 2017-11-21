@@ -4,10 +4,7 @@ import axios from 'axios';
 import BlogPostPreview from '../BlogPostPreview';
 import Footer from '../Footer';
 import Button from '../Button';
-import { 
-  LOCALHOST_POSTS_ENDPOINT,
-  POSTS_ENDPOINT 
-} from '../../constants';
+import { POSTS_ENDPOINT } from '../../constants';
 
 export default class App extends Component {
   constructor(props) {

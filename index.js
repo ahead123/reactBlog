@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Post = require('./src/models/posts');
 const Subscriber = require('./src/models/subscribers');
+const User = require('./src/models/users');
 require('dotenv').config();
 
 mongoose.connect(process.env.DB_URL);
@@ -59,7 +60,7 @@ SERVER.app.post('/posts', function(req, res){
 	 if(err){
 	 	res.send(err);
 	 }else {
-	 	 console.log('post added', post);
+	 	 console.log('post added to db: ', post);
 	 	 res.send(post);
 	 }		 
  })
@@ -67,15 +68,31 @@ SERVER.app.post('/posts', function(req, res){
 
 SERVER.app.post('/subscribe', function(req, res){
 	var subscriber = new Subscriber({
-		name: req.query.name,
-		email: req.query.email
+		name: req.body.name,
+		email: req.body.email
 	});
  subscriber.save(function(err) {
 	 if(err){
 	 	res.send(err);
 	 }else {
-	 	 console.log('subscriber added', subscriber);
+	 	 console.log('subscriber added to db: ', subscriber);
 	 	 res.send(subscriber);
+	 }		 
+ })
+})
+
+SERVER.app.post('/register', function(req, res){
+	var user = new User({
+		name: req.body.name,
+		email: req.body.email,
+		password: req.body.password
+	});
+ user.save(function(err) {
+	 if(err){
+	 	res.send(err);
+	 }else {
+	 	 console.log('user added to db: ', user);
+	 	 res.send(user);
 	 }		 
  })
 })

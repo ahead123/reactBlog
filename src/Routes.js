@@ -8,6 +8,7 @@ import Nav from './components/Nav';
 import App from './components/App';
 import SignUp from './components/SignUp';
 import BlogPost from './components/BlogPost';
+import Register from './components/Register';
 
 
 const appRoutes = [
@@ -23,6 +24,10 @@ const appRoutes = [
 	{
 		path: '/post/:id',
 		component: BlogPost
+	},
+	{
+		path: '/register',
+		component: Register
 	}
 ];
 
