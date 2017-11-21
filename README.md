@@ -26,12 +26,14 @@ heroku open
 
 ## Built With
 
-* [React](https://reactjs.org/) - The web framework used
-* [Node](https://nodejs.org/en/) - Server used
+* [React](https://reactjs.org/) - For UI views and client side routing
+* [Node](https://nodejs.org/en/) - For server
 * [Webpack](https://webpack.js.org/) - For dependency bundling
 * [Express](https://expressjs.com/) - Node server framework
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/) - For styling
-* [SendGrid](https://sendgrid.com/) - Email API
+* [SendGrid](https://sendgrid.com/) - Email API used for subscriptions
+* [MERN](http://mern.io/) - The MERN Stack for architecture
+* [MongoDB](https://www.mongodb.com/) - For data storage
 
 
 ## License
