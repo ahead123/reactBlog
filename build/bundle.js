@@ -5212,7 +5212,7 @@ module.exports = __webpack_require__(245);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return POSTS_ENDPOINT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SUBSCRIBE_ENDPOINT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return REGISTER_ENDPOINT; });
-var dev = false;
+var dev = true;
 var POSTS_ENDPOINT = dev ? 'http://localhost:3000/posts' : 'https://blogreactified.herokuapp.com/posts';
 var SUBSCRIBE_ENDPOINT = dev ? 'http://localhost:3000/subscribe' : 'https://blogreactified.herokuapp.com/subscribe';
 var REGISTER_ENDPOINT = dev ? 'http://localhost:3000/register' : 'https://blogreactified.herokuapp.com/register';
