@@ -16817,6 +16817,7 @@ var Nav = function (_Component) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostForm; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__FormHeader__ = __webpack_require__(579);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16824,6 +16825,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -16840,70 +16842,62 @@ var PostForm = function (_Component) {
 	}
 
 	_createClass(PostForm, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				"div",
-				{ className: "row mt-5 justify-content-center" },
+				'div',
+				{ className: 'row mt-5 justify-content-center' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"form",
-					{ className: "col-md-5" },
+					'form',
+					{ className: 'col-md-5' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__FormHeader__["a" /* default */], { pageHeader: 'Create New Blog Post' }),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"nav",
-						{ className: "navbar navbar-dark sidebar-heading info-color-dark mb-10 justify-content-center", style: { padding: 30 } },
+						'div',
+						{ className: 'md-form mt-5' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', id: 'defaultForm-title', className: 'form-control' }),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"h5",
-							{ className: "white-text" },
-							"Create new blog post"
+							'label',
+							{ 'for': 'defaultForm-title' },
+							'Blog post title'
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"div",
-						{ className: "md-form mt-5" },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", id: "defaultForm-title", className: "form-control" }),
+						'div',
+						{ className: 'md-form' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'password', id: 'defaultForm-pass', className: 'form-control' }),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"label",
-							{ "for": "defaultForm-title" },
-							"Blog post title"
+							'label',
+							{ 'for': 'defaultForm-pass' },
+							'Blog post author'
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"div",
-						{ className: "md-form" },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "password", id: "defaultForm-pass", className: "form-control" }),
+						'div',
+						{ className: 'md-form' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', id: 'defaultForm-img', className: 'form-control' }),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"label",
-							{ "for": "defaultForm-pass" },
-							"Blog post author"
+							'label',
+							{ 'for': 'defaultForm-img' },
+							'Blog post image URL'
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"div",
-						{ className: "md-form" },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", { type: "text", id: "defaultForm-img", className: "form-control" }),
+						'div',
+						{ className: 'md-form' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { type: 'text', id: 'defaultForm-story', style: { minHeight: 200 }, className: 'form-control' }),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"label",
-							{ "for": "defaultForm-img" },
-							"Blog post image URL"
+							'label',
+							{ 'for': 'defaultForm-story', style: { marginLeft: 5 } },
+							'Blog post teaser'
 						)
 					),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"div",
-						{ className: "md-form" },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("textarea", { type: "text", id: "defaultForm-story", style: { minHeight: 200 }, className: "form-control" }),
+						'div',
+						{ className: 'text-center' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"label",
-							{ "for": "defaultForm-story", style: { marginLeft: 5 } },
-							"Blog post teaser"
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"div",
-						{ className: "text-center" },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							"button",
-							{ className: "btn info-color-dark" },
-							"Submit Post"
+							'button',
+							{ className: 'btn info-color' },
+							'Submit Post'
 						)
 					)
 				)
@@ -16928,6 +16922,7 @@ var PostForm = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormHeader__ = __webpack_require__(579);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16935,6 +16930,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -17044,83 +17040,83 @@ var Register = function (_Component) {
 			var _this2 = this;
 
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'form',
-				{ className: 'mt-5' },
+				'div',
+				{ className: 'row justify-content-center' },
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'div',
-					{ className: 'container' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'p',
-						{ className: 'h5 text-center mb-4' },
-						'Register'
-					),
+					'form',
+					{ className: 'mt-5 col-md-5' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'md-form' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-							type: 'text',
-							id: 'form3',
-							className: 'form-control',
-							onChange: function onChange(event) {
-								return _this2.setState({ name: event.target.value, error: '' });
-							},
-							value: this.state.name
-						}),
+						{ className: 'container' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__FormHeader__["a" /* default */], { pageHeader: 'Register' }),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'label',
-							{ 'for': 'form3' },
-							'Your name'
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'md-form' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-							type: 'text',
-							id: 'form2',
-							className: 'form-control',
-							onChange: function onChange(event) {
-								return _this2.setState({ email: event.target.value, error: '' });
-							},
-							value: this.state.email
-						}),
+							'div',
+							{ className: 'md-form mt-5' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+								type: 'text',
+								id: 'form3',
+								className: 'form-control',
+								onChange: function onChange(event) {
+									return _this2.setState({ name: event.target.value, error: '' });
+								},
+								value: this.state.name
+							}),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'form3' },
+								'Your name'
+							)
+						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'label',
-							{ 'for': 'form2' },
-							'Your email'
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'md-form' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-							type: 'password',
-							id: 'form3',
-							className: 'form-control',
-							onChange: function onChange(event) {
-								return _this2.setState({ password: event.target.value, error: '' });
-							},
-							value: this.state.password
-						}),
+							'div',
+							{ className: 'md-form' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+								type: 'text',
+								id: 'form2',
+								className: 'form-control',
+								onChange: function onChange(event) {
+									return _this2.setState({ email: event.target.value, error: '' });
+								},
+								value: this.state.email
+							}),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'form2' },
+								'Your email'
+							)
+						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'label',
-							{ 'for': 'form3' },
-							'Password'
-						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'h5',
-						{ className: 'text-danger' },
+							'div',
+							{ className: 'md-form' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+								type: 'password',
+								id: 'form3',
+								className: 'form-control',
+								onChange: function onChange(event) {
+									return _this2.setState({ password: event.target.value, error: '' });
+								},
+								value: this.state.password
+							}),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'label',
+								{ 'for': 'form3' },
+								'Password'
+							)
+						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'strong',
-							null,
-							this.state.error
+							'h5',
+							{ className: 'text-danger' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'strong',
+								null,
+								this.state.error
+							)
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'text-center' },
+							this.showHideButton()
 						)
-					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'text-center' },
-						this.showHideButton()
 					)
 				)
 			);
@@ -17144,6 +17140,7 @@ var Register = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__FormHeader__ = __webpack_require__(579);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -17151,6 +17148,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -17276,78 +17274,78 @@ var SignUp = function (_Component) {
 			if (this.state.loading) {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'mt-5' },
+					{ className: 'row justify-content-center' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
-						{ className: 'container' },
+						{ className: 'mt-5 col-md-5' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'h3',
-							{ className: 'h5 text-center mb-4' },
-							'Checking Email....'
+							'div',
+							{ className: 'container' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__FormHeader__["a" /* default */], { pageHeader: 'Checking Email...' })
 						)
 					)
 				);
 			} else {
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'form',
-					{ className: 'mt-5' },
+					'div',
+					{ className: 'row justify-content-center' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'div',
-						{ className: 'container' },
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'p',
-							{ className: 'h5 text-center mb-4' },
-							'Subscribe'
-						),
+						'form',
+						{ className: 'mt-5 col-md-5' },
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'div',
-							{ className: 'md-form' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-								type: 'text',
-								id: 'form3',
-								className: 'form-control',
-								onChange: function onChange(event) {
-									return _this2.setState({ name: event.target.value, error: '' });
-								},
-								value: this.state.name
-							}),
+							{ className: 'container' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__FormHeader__["a" /* default */], { pageHeader: 'Subscribe' }),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'label',
-								{ 'for': 'form3' },
-								'Your name'
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'md-form' },
-							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
-								type: 'text',
-								id: 'form2',
-								className: 'form-control',
-								onChange: function onChange(event) {
-									return _this2.setState({ email: event.target.value, error: '' });
-								},
-								value: this.state.email
-							}),
+								'div',
+								{ className: 'md-form mt-5' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+									type: 'text',
+									id: 'form3',
+									className: 'form-control',
+									onChange: function onChange(event) {
+										return _this2.setState({ name: event.target.value, error: '' });
+									},
+									value: this.state.name
+								}),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'label',
+									{ 'for': 'form3' },
+									'Your name'
+								)
+							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'label',
-								{ 'for': 'form2' },
-								'Your email'
-							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'h5',
-							{ className: 'text-danger' },
+								'div',
+								{ className: 'md-form' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+									type: 'text',
+									id: 'form2',
+									className: 'form-control',
+									onChange: function onChange(event) {
+										return _this2.setState({ email: event.target.value, error: '' });
+									},
+									value: this.state.email
+								}),
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'label',
+									{ 'for': 'form2' },
+									'Your email'
+								)
+							),
 							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-								'strong',
-								null,
-								this.state.error
+								'h5',
+								{ className: 'text-danger' },
+								__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+									'strong',
+									null,
+									this.state.error
+								)
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'div',
+								{ className: 'text-center' },
+								this.showHideButton()
 							)
-						),
-						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-							'div',
-							{ className: 'text-center' },
-							this.showHideButton()
 						)
 					)
 				);
@@ -37602,6 +37600,32 @@ module.exports = function (css) {
     }
 }(String));
 
+
+/***/ }),
+/* 579 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+var FormHeader = function FormHeader(_ref) {
+	var pageHeader = _ref.pageHeader;
+
+
+	return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+		"nav",
+		{ className: "navbar navbar-dark sidebar-heading info-color mb-10 justify-content-center", style: { padding: 30 } },
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			"h5",
+			{ className: "white-text" },
+			pageHeader
+		)
+	);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (FormHeader);
 
 /***/ })
 /******/ ]);

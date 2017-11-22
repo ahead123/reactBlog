@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FormHeader from '../FormHeader';
 
 export default class PostForm extends Component {
 	constructor(props) {
@@ -13,9 +14,7 @@ export default class PostForm extends Component {
 			<div className="row mt-5 justify-content-center">
 				<form className="col-md-5">
 
-			    <nav className="navbar navbar-dark sidebar-heading info-color-dark mb-10 justify-content-center" style={{ padding: 30 }}>
-          	<h5 className="white-text">Create new blog post</h5>
-        	</nav>
+			    <FormHeader pageHeader="Create New Blog Post" />
 
 			    <div className="md-form mt-5">			        
 			        <input type="text" id="defaultForm-title" className="form-control" />
@@ -38,7 +37,7 @@ export default class PostForm extends Component {
 			    </div>
 
 			    <div className="text-center">
-			        <button className="btn info-color-dark">Submit Post</button>
+			        <button className="btn info-color">Submit Post</button>
 			    </div>
 				</form>
 			</div>
