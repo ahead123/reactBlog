@@ -67,9 +67,10 @@ SERVER.app.get('/posts', function(req, res){
 
 SERVER.app.post('/posts', function(req, res){
 	var post = new Post({
-		imageURL: req.query.imageURL,
-		title: req.query.title,
-		teaser: req.query.teaser
+		imageURL: req.body.imageURL,
+		title: req.body.title,
+		teaser: req.body.teaser,
+		author: req.body.author
 	});
  post.save(function(err) {
 	 if(err){

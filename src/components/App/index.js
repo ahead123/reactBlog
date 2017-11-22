@@ -74,7 +74,7 @@ export default class App extends Component {
                  
                   <div className="col-md-5 mb-4">
 
-                  <h2>Welcome to React Blog!</h2>
+                  <h2>Welcome to Blog Reactified!</h2>
                     <hr></hr>
                     <p>
                       A blog built entirely in React JS! 
