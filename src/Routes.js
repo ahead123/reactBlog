@@ -9,6 +9,7 @@ import App from './components/App';
 import SignUp from './components/SignUp';
 import BlogPost from './components/BlogPost';
 import Register from './components/Register';
+import PostForm from './components/PostForm';
 
 
 const appRoutes = [
@@ -28,6 +29,10 @@ const appRoutes = [
 	{
 		path: '/register',
 		component: Register
+	},
+	{
+		path: '/postform',
+		component: PostForm
 	}
 ];
 

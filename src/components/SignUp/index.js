@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { SUBSCRIBE_ENDPOINT } from '../../constants';
+import FormHeader from '../FormHeader';
 
 export default class SignUp extends Component {
 
@@ -95,48 +96,52 @@ export default class SignUp extends Component {
 		console.log(this.state)
 		if(this.state.loading){
 			return (
-				<div className="mt-5">
-					<div className="container">						
-						<h3 className="h5 text-center mb-4">Checking Email....</h3>
+				<div className="row justify-content-center">
+					<div className="mt-5 col-md-5">
+						<div className="container">	
+							<FormHeader pageHeader="Checking Email..." />												
+						</div>
 					</div>
-				</div>
+				</div>				
 			)
 		} else { 
 			return(
-				<form className="mt-5">
-					<div className="container">
-						
-							<p className="h5 text-center mb-4">Subscribe</p>
+				<div className="row justify-content-center">
+					<form className="mt-5 col-md-5">
+						<div className="container">
+							
+								<FormHeader pageHeader="Subscribe" />
 
-							<div className="md-form">
-							    <input 
-							    	type="text" 
-							    	id="form3" 
-							    	className="form-control"
-							    	onChange={event => this.setState({ name:event.target.value, error:'' })}
-							    	value={this.state.name} 
-							    />
-							    <label for="form3">Your name</label>
-							</div>
+								<div className="md-form mt-5">
+								    <input 
+								    	type="text" 
+								    	id="form3" 
+								    	className="form-control"
+								    	onChange={event => this.setState({ name:event.target.value, error:'' })}
+								    	value={this.state.name} 
+								    />
+								    <label for="form3">Your name</label>
+								</div>
 
-							<div className="md-form">
-							    <input 
-							    	type="text" 
-							    	id="form2" 
-							    	className="form-control"
-							    	onChange={event => this.setState({ email:event.target.value, error:'' })}
-							    	value={this.state.email}  
-							    />
-							    <label for="form2">Your email</label>
-							</div>
-							<h5 className="text-danger"><strong>{this.state.error}</strong></h5>
+								<div className="md-form">
+								    <input 
+								    	type="text" 
+								    	id="form2" 
+								    	className="form-control"
+								    	onChange={event => this.setState({ email:event.target.value, error:'' })}
+								    	value={this.state.email}  
+								    />
+								    <label for="form2">Your email</label>
+								</div>
+								<h5 className="text-danger"><strong>{this.state.error}</strong></h5>
 
-							<div className="text-center">
-							    {this.showHideButton()}
+								<div className="text-center">
+								    {this.showHideButton()}
+								</div>
 							</div>
-						</div>
-			
-				</form>
+					
+					</form>
+				</div>
 			)
 		}
 	}

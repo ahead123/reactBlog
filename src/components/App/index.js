@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import truncate from 'truncate';
 import BlogPostPreview from '../BlogPostPreview';
 import Footer from '../Footer';
 import Button from '../Button';
@@ -25,13 +26,15 @@ export default class App extends Component {
     const previews = [];
     posts.map((post, index) => {
       const postPath = `/post/${post._id}`;
+      const cleanTeaser = truncate(post.teaser, 100);
+      const cleanTitle = truncate(post.title, 45);
       previews.push(
         <div className="col-lg-4 col-md-6 mb-4">
           <Link to={postPath}>
             <BlogPostPreview 
               imageURL={post.imageURL}  
-              title={post.title} 
-              teaser={post.teaser}
+              title={cleanTitle} 
+              teaser={cleanTeaser}
               key={post._id} 
             />
           </Link>
@@ -71,7 +74,7 @@ export default class App extends Component {
                  
                   <div className="col-md-5 mb-4">
 
-                  <h2>Welcome to React Blog!</h2>
+                  <h2>Welcome to Blog Reactified!</h2>
                     <hr></hr>
                     <p>
                       A blog built entirely in React JS! 

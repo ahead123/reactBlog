@@ -3,10 +3,10 @@ import React from 'react'
 const BlogPostPreview = ({ imageURL, title, teaser }) => {
 	return(
 
-      <div className="card">
+      <div className="card" style={{ minHeight: 440, maxHeight: 440 }}>
 
           <div className="view overlay hm-white-slight">
-              <img src={imageURL} className="img-fluid" alt="" />
+              <img src={imageURL} className="img-fluid" alt="" style={{ maxHeight: 184, width: 380 }} />
               <a href="#">
                   <div className="mask"></div>
               </a>

@@ -48,7 +48,7 @@ export default class BlogPost extends Component {
 			    </div>                              
 			    <div className="col-md-5 mb-4">
 			    	<h2>{title}</h2>
-			      <hr></hr>
+			      <hr />
 			      <p>{teaser}</p>
 			    </div>
 			    </div>   

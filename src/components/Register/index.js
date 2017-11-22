@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { REGISTER_ENDPOINT } from '../../constants';
+import FormHeader from '../FormHeader';
 
 export default class Register extends Component {
 
@@ -81,50 +82,52 @@ export default class Register extends Component {
 
 	render(){
 		return(
-			<form className="mt-5">
-				<div className="container">
-					
-						<p className="h5 text-center mb-4">Register</p>
+			<div className="row justify-content-center">
+				<form className="mt-5 col-md-5">
+					<div className="container">
+						
+							<FormHeader pageHeader="Register" />
 
-						<div className="md-form">
-						    <input 
-						    	type="text" 
-						    	id="form3" 
-						    	className="form-control"
-						    	onChange={event => this.setState({ name:event.target.value, error:'' })}
-						    	value={this.state.name} 
-						    />
-						    <label for="form3">Your name</label>
-						</div>
+							<div className="md-form mt-5">
+							    <input 
+							    	type="text" 
+							    	id="form3" 
+							    	className="form-control"
+							    	onChange={event => this.setState({ name:event.target.value, error:'' })}
+							    	value={this.state.name} 
+							    />
+							    <label for="form3">Your name</label>
+							</div>
 
-						<div className="md-form">
-						    <input 
-						    	type="text" 
-						    	id="form2" 
-						    	className="form-control"
-						    	onChange={event => this.setState({ email:event.target.value, error:'' })}
-						    	value={this.state.email}  
-						    />
-						    <label for="form2">Your email</label>
-						</div>
+							<div className="md-form">
+							    <input 
+							    	type="text" 
+							    	id="form2" 
+							    	className="form-control"
+							    	onChange={event => this.setState({ email:event.target.value, error:'' })}
+							    	value={this.state.email}  
+							    />
+							    <label for="form2">Your email</label>
+							</div>
 
-						<div className="md-form">
-						    <input 
-						    	type="password" 
-						    	id="form3" 
-						    	className="form-control"
-						    	onChange={event => this.setState({ password:event.target.value, error:'' })}
-						    	value={this.state.password}  
-						    />
-						    <label for="form3">Password</label>
-						</div>
-						<h5 className="text-danger"><strong>{this.state.error}</strong></h5>
+							<div className="md-form">
+							    <input 
+							    	type="password" 
+							    	id="form3" 
+							    	className="form-control"
+							    	onChange={event => this.setState({ password:event.target.value, error:'' })}
+							    	value={this.state.password}  
+							    />
+							    <label for="form3">Password</label>
+							</div>
+							<h5 className="text-danger"><strong>{this.state.error}</strong></h5>
 
-						<div className="text-center">						 
-							{this.showHideButton()}
-						</div>
-					</div>			
-			</form>
+							<div className="text-center">						 
+								{this.showHideButton()}
+							</div>
+						</div>			
+				</form>
+			</div>
 		)
 	}
 

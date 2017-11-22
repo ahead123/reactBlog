@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
  imageURL: String,
  title: String,
- teaser: String
+ teaser: String,
+ author: String
 });
 
 //export our module to use in server.js
