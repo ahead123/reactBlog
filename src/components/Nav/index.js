@@ -26,6 +26,9 @@ export default class Nav extends Component {
 			            <li className="nav-item">
 			            	<Link className="nav-link" to="/register">Register</Link>
 			            </li>
+			            <li className="nav-item">
+			            	<Link className="nav-link" to="/postform">Post Form</Link>
+			            </li>
 			        </ul>
 
 			        <form className="form-inline">

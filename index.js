@@ -2,24 +2,38 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const Post = require('./src/models/posts');
 const Subscriber = require('./src/models/subscribers');
 const User = require('./src/models/users');
 require('dotenv').config();
 
-mongoose.connect(process.env.DB_URL)
-	.then(() => console.log('connection successful'))
-	.catch((err) => console.error(err));
+mongoose.connect(process.env.DB_URL);
 
+const db = mongoose.connection;
+db.on('error', error => console.log('connection error:', error));
+db.once('open', () => console.log('connection successful'));
 
 var SERVER = {
 	app: express(),
 	port: process.env.PORT || 3000,
 	static: function(req, res) {
+		console.log(req.session.id);
+  	console.log(req.session.cookie);
 		console.log('dirname',__dirname);
 		res.sendFile('/build/index.html');
 	}
 };
+
+SERVER.app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
 
 
 SERVER.app.use(function(req, res, next) {
